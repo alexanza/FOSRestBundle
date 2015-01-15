@@ -160,6 +160,10 @@ class FOSRestExtension extends Extension implements PrependExtensionInterface
             }
         }
 
+        if (!empty($config['patch_request_listener'])) {
+            $loader->load('patch_request_listener.xml');
+        }
+
         if (!empty($config['format_listener']['rules'])) {
             $loader->load('format_listener.xml');
 

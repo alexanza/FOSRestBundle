@@ -100,6 +100,7 @@ class Configuration implements ConfigurationInterface
         $this->addViewSection($rootNode);
         $this->addExceptionSection($rootNode);
         $this->addBodyListenerSection($rootNode);
+        $this->addPatchRequestListenerSection($rootNode);
         $this->addFormatListenerSection($rootNode);
 
         return $treeBuilder;
@@ -188,6 +189,16 @@ class Configuration implements ConfigurationInterface
                             ->end()
                         ->end()
                     ->end()
+                ->end()
+            ->end();
+    }
+
+    private function addPatchRequestListenerSection(ArrayNodeDefinition $rootNode)
+    {
+        $rootNode
+            ->children()
+                ->scalarNode('patch_request_listener')
+                    ->defaultFalse()
                 ->end()
             ->end();
     }
